@@ -1,6 +1,6 @@
 # E-Commerce Application (Next.js + MongoDB)
 
-A modern mini e-commerce app implemented in **Next.js 14+** with full shopping flow:
+A modern mini e-commerce app implemented in **Next.js 16+** with full shopping flow:
 - product browsing
 - cart management
 - checkout with order creation
