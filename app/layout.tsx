@@ -8,6 +8,7 @@ import Navbar from "@/components/app/navbar";
 import { Toaster } from "sonner";
 import { ClerkProvider } from "@clerk/nextjs"
 import { CartStoreProvider } from "@/stores/cart-store-provider";
+import NextTopLoader from 'nextjs-toploader';
 import "./globals.css";
 
 const roboto = Roboto({
@@ -32,6 +33,7 @@ export default function RootLayout({
         >
           <ClerkProvider>
             <TooltipProvider>
+              <NextTopLoader showSpinner={false} color="#aaff0d" height={2} />
               <TopNav />
               <Navbar />
               {children}
