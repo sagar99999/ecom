@@ -6,10 +6,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Link from "next/link";
-import { CircleUserRound } from "lucide-react";
+import { CircleUserRound, Loader2 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+
 import {
     AlertDialog,
     AlertDialogAction,
@@ -254,6 +255,9 @@ export default function ProductForm() {
                 {/* Buttons */}
                 <div className="flex gap-3">
                     <Button disabled={isSubmitting} type="submit" className="bg-brand-green text-black grow h-12 cursor-pointer">
+                        {
+                            isSubmitting && <Loader2 className="size-4 mr-2 animate-spin" />
+                        }
                         Update
                     </Button>
 
