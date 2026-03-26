@@ -84,7 +84,7 @@ Built as an assignment project and ready for GitHub portfolio, deployment, and f
 
 ## 🛠️ Tech Stack
 
-- Next.js 14.x (App Router)
+- Next.js 16.x (App Router)
 - React, TypeScript
 - MongoDB + Mongoose
 - Next.js API routes
