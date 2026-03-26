@@ -29,6 +29,7 @@ Built as an assignment project and ready for GitHub portfolio, deployment, and f
 
 ### Checkout & order placement
 - Checkout form (`/checkout`) with user details, shipping address, and notes
+- Client-side form validation using `react-hook-form` (required field checks, minimum length, valid formats)
 - Pre-filled user name/email from Clerk auth
 - Cart summary and price breakdown
 - `POST /api/orders` creates order with transaction-safe stock decrement
@@ -44,6 +45,9 @@ Built as an assignment project and ready for GitHub portfolio, deployment, and f
 - `/admin/update/[id]` to edit product details + image replacement
 - Delete product with remote image cleanup
 - `requireAdmin()` middleware to guard product APIs
+
+### Navigation enhancement
+- Top loader animation on route change/navigation events
 
 ### Backend API + validation
 - `POST /api/products` - create product (admin-only)
