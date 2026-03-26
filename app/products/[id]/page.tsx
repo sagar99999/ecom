@@ -1,8 +1,8 @@
 import dbConnect from "@/lib/dbConnect"
 import Product from "@/models/product"
 import Image from "next/image"
-import { Box, ShoppingBag } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Box } from "lucide-react"
+import CartBtn from "@/components/app/cart-btn"
 
 type ProductProps = {
     params: Promise<
@@ -12,6 +12,7 @@ type ProductProps = {
 }
 
 export default async function ProductPage({ params }: ProductProps) {
+
     const { id } = await params
 
     await dbConnect();
@@ -27,15 +28,10 @@ export default async function ProductPage({ params }: ProductProps) {
                 <p className="mb-3 text-center font-semibold flex items-center">
                     <Box className="size-4 mr-0.5" />
                     {product.quantity}</p>
-                    <p className="mb-3 ml-3 bg-brand-green text-xs font-bold rounded-xl py-1 px-3 text-black text-center mr-3">{product.category}</p>
+                <p className="mb-3 ml-3 bg-brand-green text-xs font-bold rounded-xl py-1 px-3 text-black text-center mr-3">{product.category}</p>
             </div>
             <p className="mb-5 p-4 rounded-lg bg-near-black border-2 border-[#252525]">{product.description}</p>
-            <Button className="bg-brand-green font-semibold h-12 cursor-pointer text-black w-full rounded-sm" asChild>
-                <div className="flex items-center">
-                    <ShoppingBag className="size-4.5" />
-                    Buy
-                </div>
-            </Button>
+            <CartBtn id={product._id.toString()} name={product.name} price={product.price} imageUrl={product.imageUrl} category={product.category} />
         </div>
     ) : null
 }

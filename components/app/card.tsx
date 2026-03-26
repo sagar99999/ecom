@@ -11,7 +11,7 @@ type CardProps = {
     productName: string,
     productPrice: number,
     quantity: number,
-    category: string,  // ✅ add this
+    category: string,
 }
 
 export default function Card({ _id, img, productName, productPrice, quantity, category }: CardProps) {
@@ -22,7 +22,7 @@ export default function Card({ _id, img, productName, productPrice, quantity, ca
             _id,
             name: productName,
             price: productPrice,
-            imageUrl: img,      // ✅ mapped from img -> imageUrl
+            imageUrl: img,
             category,
         });
     };
@@ -41,7 +41,7 @@ export default function Card({ _id, img, productName, productPrice, quantity, ca
                 </div>
             </Link>
             <Button
-                onClick={handleAddToCart}  // ✅ fixed
+                onClick={handleAddToCart}
                 className="bg-brand-green h-11 cursor-pointer text-black w-full rounded-sm"
             >
                 <ShoppingBag className="size-4.5" />
