@@ -6,10 +6,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Link from "next/link";
-import { CircleUserRound } from "lucide-react";
+import { CircleUserRound, Loader2 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+
 import {
     AlertDialog,
     AlertDialogAction,
@@ -35,6 +36,7 @@ export default function ProductForm() {
     const { id } = useParams<{ id: string }>();
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+    const [isMounted, setIsMounted] = useState(false)
 
     const {
         register,
@@ -137,6 +139,7 @@ export default function ProductForm() {
                     description: product.description,
                 });
                 setImagePreview(product.imageUrl);
+                setIsMounted(true)
             } catch (error: any) {
                 toast.error("Error", { description: error.message });
             }
@@ -144,10 +147,19 @@ export default function ProductForm() {
         fetchProduct();
     }, [id, reset]);
 
+    // Wait for user data to load before rendering the form
+    if (!isMounted) {
+        return (
+            <div className="flex justify-center items-center min-h-[60vh]">
+                <Loader2 className="size-8 animate-spin text-muted-foreground" />
+            </div>
+        )
+    }
+
     return (
         <div className="max-w-150 px-5 mb-15 mx-auto">
             <div className="flex items-center justify-between">
-                <h1 className="text-lg font-bold mb-4">{id ? "Edit Product" : "Add Product"}</h1>
+                <h1 className="text-lg font-bold mb-4">Update Product</h1>
                 <Link href="/admin">
                     <CircleUserRound className="size-6" />
                 </Link>
@@ -254,6 +266,9 @@ export default function ProductForm() {
                 {/* Buttons */}
                 <div className="flex gap-3">
                     <Button disabled={isSubmitting} type="submit" className="bg-brand-green text-black grow h-12 cursor-pointer">
+                        {
+                            isSubmitting && <Loader2 className="size-4 mr-2 animate-spin" />
+                        }
                         Update
                     </Button>
 

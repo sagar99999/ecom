@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel"
 import Image from "next/image"
 import Autoplay from "embla-carousel-autoplay"
+import Link from "next/link"
 
 export default function FeaturedProduct() {
   return (
@@ -27,13 +28,17 @@ export default function FeaturedProduct() {
         <CarouselContent>
           <CarouselItem>
             <div className="relative">
-              <Image src="/images/hero2.jpg" style={{ height: "100%", width: "100%" }} height={639} width={1918} alt="hero image 1" />
+              <Link href="/products/69c2a1ed20b5a419e31a91f4">
+                <Image src="/images/hero2.jpg" style={{ height: "100%", width: "100%" }} height={639} width={1918} alt="hero image 1" />
+              </Link>
             </div>
           </CarouselItem>
-          
+
           <CarouselItem>
             <div className="relative">
-              <Image src="/images/hero3.jpg" style={{ height: "100%", width: "100%" }} height={639} width={1918} alt="hero image 1" />
+              <Link href="/products/69c2a1ed20b5a419e31a91f4">
+                <Image src="/images/hero3.jpg" style={{ height: "100%", width: "100%" }} height={639} width={1918} alt="hero image 1" />
+              </Link>
             </div>
           </CarouselItem>
 

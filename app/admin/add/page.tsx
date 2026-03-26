@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner"
 import Link from "next/link";
-import { CircleUserRound } from "lucide-react"
+import { CircleUserRound, Loader2 } from "lucide-react"
 
 export type ProductFormType = {
     name: string;
@@ -173,7 +173,11 @@ export default function ProductForm() {
                         <p className="text-red-500 text-sm mt-4">{errors.image.message}</p>
                     )}
                 </div>
-                <Button disabled={isSubmitting} type="submit" className="bg-brand-green text-black w-full h-12 cursor-pointer">Upload</Button>
+                <Button disabled={isSubmitting} type="submit" className="bg-brand-green text-black w-full h-12 cursor-pointer">
+                    {
+                        isSubmitting && <Loader2 className="size-4 mr-2 animate-spin" />
+                    }
+                    Upload</Button>
             </form>
         </div>
     );
