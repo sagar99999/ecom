@@ -121,7 +121,7 @@ pnpm dev
 
 ## 🧪 Test / Usage Notes
 
-- Admin routes require proper role set in user metadata (`role: admin`).
+- Admin routes require proper role set in user metadata (`role: admin`), admin email (`shaagar5@gmail.com`).
 - Product image format restrictions: JPEG, PNG, WEBP and max 4MB.
 - Order placement checks stock and updates inventory in a MongoDB transaction.
 
