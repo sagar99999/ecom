@@ -3,8 +3,14 @@ import Product from "@/models/product"
 import Tile from '@/components/app/tile';
 import { CirclePlus } from "lucide-react"
 import Link from "next/link"
+import type { Metadata } from 'next'
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+    title: 'Ecommerce | Products',
+    description: 'your products',
+}
 
 export default async function Admin() {
 

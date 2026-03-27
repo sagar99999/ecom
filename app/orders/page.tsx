@@ -3,8 +3,14 @@ import Order from '@/models/order'
 import OrderTile from '@/components/app/order-tile'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import type { Metadata } from 'next'
 
 export const dynamic = "force-dynamic"
+
+export const metadata: Metadata = {
+    title: 'Ecommerce | Orders',
+    description: 'your orders',
+}
 
 export default async function AdminOrders() {
     await dbConnect()
