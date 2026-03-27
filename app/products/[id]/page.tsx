@@ -3,12 +3,36 @@ import Product from "@/models/product"
 import Image from "next/image"
 import { Box } from "lucide-react"
 import CartBtn from "@/components/app/cart-btn"
+import type { Metadata } from 'next'
 
 type ProductProps = {
     params: Promise<
         {
             id: string
         }>
+}
+
+export async function generateMetadata({ params }: ProductProps): Promise<Metadata> {
+    const { id } = await params
+    await dbConnect()
+    const product = await Product.findOne({ _id: id }).lean()
+
+    if (!product) {
+        return {
+            title: "Product Not Found",
+            description: "The product you're looking for doesn't exist."
+        }
+    }
+
+    return {
+        title: `${product.name}`,
+        description: product.description,
+        openGraph: {
+            title: product.name,
+            description: product.description,
+            images: [{ url: product.imageUrl }]
+        }
+    }
 }
 
 export default async function ProductPage({ params }: ProductProps) {
